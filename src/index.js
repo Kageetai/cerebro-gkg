@@ -2,7 +2,7 @@ const React = require('react')
 
 import getKnowledge from './knowledgeGraph'
 import Preview from './Preview'
-import icon from 'assets/icon.png'
+import icon from 'icon.png'
 
 const order = 11;
 
