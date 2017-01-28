@@ -1,13 +1,13 @@
 {
-  "name": "cerebro-plugin",
-  "version": "0.0.2",
-  "description": "",
+  "name": "cerebro-gkg",
+  "version": "0.5.0",
+  "description": "Cerebro-Plugin to look up the Google Knowledge Graph",
   "license": "MIT",
-  "repository": "KELiON/cerebro-plugin",
+  "repository": "Kageetai/cerebro-gkg",
   "author": {
-    "name": "Alexandr Subbotin",
-    "email": "kelionweb@gmail.com",
-    "url": "asubbotin.ru"
+    "name": "Michael Seifarth",
+    "email": "ma@kageetai.net",
+    "url": "kageetai.net"
   },
   "engines": {
     "node": ">=4"
@@ -20,7 +20,8 @@
   "main": "dist/index.js",
   "keywords": [
     "cerebro",
-    "cerebro-plugin"
+    "cerebro-plugin",
+    "google knowledge graph"
   ],
   "devDependencies": {
     "babel-cli": "^6.18.0",
