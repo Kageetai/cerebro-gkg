@@ -12,11 +12,12 @@ const knowledgeGraph = (query) => {
     return fetch(url)
         .then(response => response.json())
         .then(response => {
-            if (!response.itemListElement.length) {
-                throw 'no results'
+            const result = (response.itemListElement.length) ? response.itemListElement[0].result : null
+            if (!result || !(result.url || (result.detailedDescription && result.detailedDescription.url))) {
+                throw 'no results or usuable data'
             }
 
-            return response.itemListElement[0].result
+            return result
         })
 }
 
