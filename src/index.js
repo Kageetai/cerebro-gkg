@@ -1,6 +1,7 @@
 const React = require('react')
 
 import getKnowledge from './knowledgeGraph'
+import Preview from './Preview'
 import icon from 'assets/icon.png'
 
 const order = 2;
@@ -16,7 +17,12 @@ const plugin = ({term, display, actions}) => {
             onSelect: () => {
                 actions.open(result.url)
             },
-            // getPreview: () => <Preview query={term} key={term} search={search} />
+            getPreview: () => <Preview
+                name={result.name}
+                description={result.description}
+                image={result.image.contentUrl}
+                article={result.detailedDescription.articleBody}
+                articleUrl={result.detailedDescription.url}  />
         })
     })
 }
