@@ -8,11 +8,11 @@ import { memoize } from 'cerebro-tools'
  * @return {Promise}
  */
 const knowledgeGraph = (query) => {
-    const url = `https://kgsearch.googleapis.com/v1/entities:search?query=${encodeURIComponent(query)}&key=${API_KEY}&limit=1`
+    const url = `https://kgsearch.googleapis.com/v1/entities:search?query=${encodeURIComponent(query)}&key=${API_KEY}`
     return fetch(url)
         .then(response => response.json())
         .then(response => {
-            const result = (response.itemListElement.length) ? response.itemListElement[0].result : null
+            const result = response.itemListElement.find(element => element.result.name.toLowerCase().includes(query)).result
             if (!result || !(result.url || (result.detailedDescription && result.detailedDescription.url))) {
                 throw 'no results or usuable data'
             }

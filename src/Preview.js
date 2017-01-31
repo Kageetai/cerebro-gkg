@@ -1,25 +1,32 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
+import Preload from 'Preload'
+import getKnowledge from 'knowledgeGraph'
+import styles from 'styles.css'
 
-const Preview = ({name, description, image, article, articleUrl}) => {
-    image = (image) ? <img src={image} alt={name}/> : '';
+export default class Preview extends Component {
+    static propTypes = {
+        query: PropTypes.string.isRequired,
+    }
 
-    return (
-        <div>
-            <h1>{name}</h1>
-            <h2>{description}</h2>
-            {image}
-            <p>{article}</p>
-            <em>Source: <a href={articleUrl}>{articleUrl}</a></em>
-        </div>
-    )
-};
+    renderResult(result) {
+        const image = (result.image && result.image.contentUrl) ? <img src={result.image.contentUrl} alt={result.name.contentUrl}/> : ''
+        return (
+            <div className={styles.gkg}>
+                <h1>{result.name}</h1>
+                <h2>{result.description}</h2>
+                {image}
+                <p>{result.detailedDescription.articleBody}</p>
+                <em>Source: <a href={result.detailedDescription.url}>{result.detailedDescription.url}</a></em>
+            </div>
+        )
+    }
 
-Preview.propTypes = {
-    name: React.PropTypes.string.isRequired,
-    description: React.PropTypes.string.isRequired,
-    image: React.PropTypes.string,
-    article: React.PropTypes.string.isRequired,
-    articleUrl: React.PropTypes.string.isRequired,
+    render() {
+        const { query } = this.props
+        return (
+            <Preload promise={getKnowledge(query)}>
+                {(result) => this.renderResult(result || [])}
+            </Preload>
+        )
+    }
 }
-
-export default Preview;

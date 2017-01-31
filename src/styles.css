@@ -1,0 +1,13 @@
+.gkg {
+  h1, h2 {
+    font-family: inherit;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  a {
+    color: var(--secondary-font-color);
+  }
+}
