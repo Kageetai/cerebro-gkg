@@ -27,19 +27,16 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.css$/,
-      use: [{
-        loader: 'style-loader'
-      }, {
-        loader: 'css-loader',
-        query: {
-          modules: true
-        }
-      }]
+      use: [
+        'style-loader',
+        'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader',
+        'postcss-loader'
+      ]
     }, {
-        test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-        use: {
-          loader: 'url-loader'
-        }
+      test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+      use: {
+        loader: 'url-loader'
+      }
     }]
   }
 };

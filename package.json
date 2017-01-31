@@ -24,6 +24,7 @@
     "google knowledge graph"
   ],
   "devDependencies": {
+    "autoprefixer": "^6.7.2",
     "babel-cli": "^6.18.0",
     "babel-core": "6.11.4",
     "babel-eslint": "6.0.4",
@@ -49,6 +50,8 @@
     "babili": "0.0.9",
     "cerebro-tools": "^0.1.0",
     "css-loader": "^0.26.0",
+    "postcss-loader": "0.9.1",
+    "postcss-nested": "1.0.0",
     "react": "^15.4.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
